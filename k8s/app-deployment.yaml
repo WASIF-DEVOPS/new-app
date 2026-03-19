@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: app
+          image: 447777058729.dkr.ecr.us-east-1.amazonaws.com/three-tier-app:latest
+          ports:
+            - containerPort: 4000
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: endpoint
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: password
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: dbname
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+  namespace: app
+spec:
+  selector:
+    app: app
+  ports:
+    - port: 4000
+      targetPort: 4000
+  type: ClusterIP
