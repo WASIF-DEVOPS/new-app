@@ -46,10 +46,13 @@ spec:
 
         stage('Push to ECR') {
             steps {
-                container('docker') {
-                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials']]) {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials']]) {
+                    container('kubectl') {
+                        sh "aws ecr get-login-password --region ${AWS_REGION} > /tmp/ecr-pass"
+                    }
+                    container('docker') {
                         sh """
-                            aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+                            cat /tmp/ecr-pass | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
                             docker push ${ECR_WEB}:${IMAGE_TAG}
                             docker push ${ECR_APP}:${IMAGE_TAG}
                         """
