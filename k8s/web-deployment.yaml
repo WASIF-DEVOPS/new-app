@@ -17,7 +17,7 @@ spec:
         - name: web
           image: 447777058729.dkr.ecr.us-east-1.amazonaws.com/three-tier-web:latest
           ports:
-            - containerPort: 80
+            - containerPort: 5000
           env:
             - name: APP_URL
               value: "http://app-service:4000"

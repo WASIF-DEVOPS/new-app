@@ -10,7 +10,7 @@ def index():
     todos={}
 
     try:
-        url = "http://localhost/api/"
+        url = "http://app-service:4000/"
         response = requests.get(url, timeout=60)
         todos = json.loads(response.content)
     except Exception as ex:
@@ -19,4 +19,4 @@ def index():
     return render_template('index.html', todos=todos)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
