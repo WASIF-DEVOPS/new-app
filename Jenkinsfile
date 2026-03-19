@@ -67,6 +67,7 @@ spec:
                     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials']]) {
                         sh """
                             aws eks update-kubeconfig --name dev-eks-cluster --region ${AWS_REGION}
+                            kubectl create namespace app --dry-run=client -o yaml | kubectl apply -f -
                             kubectl apply -f k8s/
                             kubectl set image deployment/web web=${ECR_WEB}:${IMAGE_TAG} -n app
                             kubectl set image deployment/app app=${ECR_APP}:${IMAGE_TAG} -n app
