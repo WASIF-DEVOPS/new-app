@@ -31,7 +31,7 @@ spec:
             steps {
                 git branch: 'main',
                     credentialsId: 'github-credentials',
-                    url: 'https://github.com/masthandevops/three-tier-web-app.git'
+                    url: 'https://github.com/Stalker74/three-tier-web-app.git'
             }
         }
 
