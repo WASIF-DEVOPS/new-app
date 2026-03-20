@@ -1,0 +1,222 @@
+pipeline {
+  agent {
+    kubernetes {
+      yaml """
+        apiVersion: v1
+        kind: Pod
+        spec:
+          nodeSelector:
+            role: jenkins-agent
+          containers:
+          - name: agent
+            image: 447777058729.dkr.ecr.us-east-1.amazonaws.com/jenkins-agent:latest
+            command: ['cat']
+            tty: true
+      """
+    }
+  }
+  triggers {
+    githubPullRequests()
+  }
+  stages {
+    stage('Build') {
+      steps {
+        container('agent') {
+          sh 'docker build -t dev-app .'
+        }
+      }
+    }
+    stage('Test') {
+      steps {
+        container('agent') {
+          sh 'echo "Run tests here"'
+        }
+      }
+    }
+    stage('Deploy') {
+      steps {
+        container('agent') {
+          sh '''
+            aws eks update-kubeconfig --region us-east-1 --name dev-eks-cluster
+            kubectl apply -f k8s/app/
+          '''
+        }
+      }
+    }
+  }
+}
+ out.
+Request timed out.
+
+Ping statistics for 10.0.1.221:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+PS C:\teraform\EKS Project\terraform> aws ec2 describe-load-balancers --query "LoadBalancers[?contains(DNSName,'jenkins')].{SG:SecurityGroups,DNS:DNSName}" --output table
+>>
+
+aws.exe: [ERROR]: argument operation: Found invalid choice 'describe-load-balancers'
+
+
+usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+To see help text, you can run:
+
+  aws help
+  aws <command> help
+  aws <command> <subcommand> help
+
+PS C:\teraform\EKS Project\terraform> aws elbv2 describe-load-balancers --query "LoadBalancers[?contains(DNSName,'jenkins')].{SG:SecurityGroups,DNS:DNSName}" --output table
+>>
+--------------------------------------------------------------------------------------------
+|                                   DescribeLoadBalancers                                  |
++-----+------------------------------------------------------------------------------------+
+|  DNS|  internal-k8s-jenkins-devingre-d178179b84-1456540305.us-east-1.elb.amazonaws.com   |
++-----+------------------------------------------------------------------------------------+
+||                                           SG                                           ||
+|+----------------------------------------------------------------------------------------+|
+||  sg-0231e59726f28adfa                                                                  ||
+||  sg-0f61b7d5ae48c5fb0                                                                  ||
+|+----------------------------------------------------------------------------------------+|
+
+PS C:\teraform\EKS Project\terraform> aws ec2 describe-security-groups --group-ids sg-0231e59726f28adfa sg-0f61b7d5ae48c5fb0 --query "SecurityGroups[*].{Name:GroupName,Rules:IpPermissions}" --output table
+>>
+------------------------------------------
+|         DescribeSecurityGroups         |
++----------------------------------------+
+|                  Name                  |
++----------------------------------------+
+|  k8s-jenkins-devingre-ebb46ccef3       |
++----------------------------------------+
+||                 Rules                ||
+|+-----------+---------------+----------+|
+|| FromPort  |  IpProtocol   | ToPort   ||
+|+-----------+---------------+----------+|
+||  80       |  tcp          |  80      ||
+|+-----------+---------------+----------+|
+|||              IpRanges              |||
+||+----------------+-------------------+||
+|||     CidrIp     |    Description    |||
+||+----------------+-------------------+||
+|||  0.0.0.0/0     |                   |||
+||+----------------+-------------------+||
+|         DescribeSecurityGroups         |
++----------------------------------------+
+|                  Name                  |
++----------------------------------------+
+|  k8s-traffic-devekscluster-1d065b7ad2  |
++----------------------------------------+
+
+PS C:\teraform\EKS Project\terraform> 
+PS C:\teraform\EKS Project\terraform>
+PS C:\teraform\EKS Project\terraform>
+PS C:\teraform\EKS Project\terraform>
+PS C:\teraform\EKS Project\terraform> aws ec2 describe-client-vpn-routes --client-vpn-endpoint-id cvpn-endpoint-074db9ecabd2dfc3f --output table
+>>
+--------------------------------------------------------------
+|                   DescribeClientVpnRoutes                  |
++------------------------------------------------------------+
+||                          Routes                          ||
+|+----------------------+-----------------------------------+|
+||  ClientVpnEndpointId |  cvpn-endpoint-074db9ecabd2dfc3f  ||
+||  Description         |  Default Route                    ||
+||  DestinationCidr     |  10.0.0.0/16                      ||
+||  Origin              |  associate                        ||
+||  TargetSubnet        |  subnet-05b30170a059482f5         ||
+||  Type                |  Nat                              ||
+|+----------------------+-----------------------------------+|
+|||                         Status                         |||
+||+------------------------+-------------------------------+||
+                                                                                                                                       
+||+------------------------+-------------------------------+||
+||                          Routes                          ||
+|+----------------------+-----------------------------------+|
+||  ClientVpnEndpointId |  cvpn-endpoint-074db9ecabd2dfc3f  ||
+||  Description         |                                   ||
+||  DestinationCidr     |  10.0.1.0/24                      ||
+||  Origin              |  add-route                        ||
+||  TargetSubnet        |  subnet-05b30170a059482f5         ||
+||  Type                |  Nat                              ||
+|+----------------------+-----------------------------------+|
+|||                         Status                         |||
+||+------------------------+-------------------------------+||
+                                                                                                                                       
+||+------------------------+-------------------------------+||
+||                          Routes                          ||
+|+----------------------+-----------------------------------+|
+||  ClientVpnEndpointId |  cvpn-endpoint-074db9ecabd2dfc3f  ||
+||  Description         |                                   ||
+||  DestinationCidr     |  10.0.2.0/24                      ||
+||  Origin              |  add-route                        ||
+||  TargetSubnet        |  subnet-05b30170a059482f5         ||
+||  Type                |  Nat                              ||
+|+----------------------+-----------------------------------+|
+|||                         Status                         |||
+||+------------------------+-------------------------------+||
+                                                                                                                                       
+||+------------------------+-------------------------------+||
+||                          Routes                          ||
+|+----------------------+-----------------------------------+|
+||  ClientVpnEndpointId |  cvpn-endpoint-074db9ecabd2dfc3f  ||
+||  Description         |  Default Route                    ||
+||  DestinationCidr     |  10.0.0.0/16                      ||
+||  Origin              |  associate                        ||
+||  TargetSubnet        |  subnet-079018bcb3e8d367c         ||
+||  Type                |  Nat                              ||
+|+----------------------+-----------------------------------+|
+|||                         Status                         |||
+||+------------------------+-------------------------------+||
+                                                                                                                                       
+||+------------------------+-------------------------------+||
+
+PS C:\teraform\EKS Project\terraform> 
+PS C:\teraform\EKS Project\terraform>
+PS C:\teraform\EKS Project\terraform>
+PS C:\teraform\EKS Project\terraform> 
+PS C:\teraform\EKS Project\terraform> 
+PS C:\teraform\EKS Project\terraform>
+PS C:\teraform\EKS Project\terraform> 
+PS C:\teraform\EKS Project\terraform>
+PS C:\teraform\EKS Project\terraform>
+PS C:\teraform\EKS Project\terraform> 
+PS C:\teraform\EKS Project\terraform> 
+PS C:\teraform\EKS Project\terraform>
+PS C:\teraform\EKS Project\terraform>
+PS C:\teraform\EKS Project\terraform>
+PS C:\teraform\EKS Project\terraform>
+PS C:\teraform\EKS Project\terraform>
+PS C:\teraform\EKS Project\terraform> 
+PS C:\teraform\EKS Project\terraform> aws ec2 describe-client-vpn-target-networks --client-vpn-endpoint-id cvpn-endpoint-074db9ecabd2dfc3f --output table
+>>
+--------------------------------------------------------------
+|               DescribeClientVpnTargetNetworks              |
++------------------------------------------------------------+
+||                  ClientVpnTargetNetworks                 ||
+|+----------------------+-----------------------------------+|
+||  AssociationId       |  cvpn-assoc-07d68e50f7088f22e     ||
+||  ClientVpnEndpointId |  cvpn-endpoint-074db9ecabd2dfc3f  ||
+||  TargetNetworkId     |  subnet-05b30170a059482f5         ||
+||  VpcId               |  vpc-0340f13b15aa840e0            ||
+|+----------------------+-----------------------------------+|
+|||                     SecurityGroups                     |||
+||+--------------------------------------------------------+||
+|||  sg-026fb50516a09911b                                  |||
+||+--------------------------------------------------------+||
+|||                         Status                         |||
+||+-------------------+------------------------------------+||
+                                                                                                                                       
+||+-------------------+------------------------------------+||
+||                  ClientVpnTargetNetworks                 ||
+|+----------------------+-----------------------------------+|
+||  AssociationId       |  cvpn-assoc-05d48e571ba7b88f2     ||
+||  ClientVpnEndpointId |  cvpn-endpoint-074db9ecabd2dfc3f  ||
+||  TargetNetworkId     |  subnet-079018bcb3e8d367c         ||
+||  VpcId               |  vpc-0340f13b15aa840e0            ||
+|+----------------------+-----------------------------------+|
+|||                     SecurityGroups                     |||
+||+--------------------------------------------------------+||
+|||  sg-026fb50516a09911b                                  |||
+||+--------------------------------------------------------+||
+|||                         Status                         |||
+||+-------------------+------------------------------------+||
+                                                                                                                                       
+||+-------------------+------------------------------------+||
+
+PS C:\teraform\EKS Project\terraform> 
