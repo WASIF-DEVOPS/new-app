@@ -15,6 +15,9 @@ spec:
     spec:
       nodeSelector:
         role: jenkins-app
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
       containers:
         - name: jenkins
           image: jenkins/jenkins:lts

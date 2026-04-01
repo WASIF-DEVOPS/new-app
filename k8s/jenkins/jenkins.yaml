@@ -4,6 +4,14 @@ metadata:
   name: jenkins
 ---
 apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: jenkins
+  namespace: jenkins
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::447777058729:role/dev-eks-cluster-jenkins-irsa
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: jenkins-pvc
@@ -32,6 +40,7 @@ spec:
     spec:
       nodeSelector:
         role: jenkins-app
+      serviceAccountName: jenkins
       securityContext:
         fsGroup: 1000
         runAsUser: 1000
