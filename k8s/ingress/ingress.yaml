@@ -35,7 +35,7 @@ metadata:
     alb.ingress.kubernetes.io/success-codes: "200,404"
 spec:
   rules:
-    - host: dev.domain.com
+    - host: dev.volo.pk
       http:
         paths:
           - path: /
