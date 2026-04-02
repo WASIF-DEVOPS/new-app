@@ -81,6 +81,7 @@ pipeline {
       steps {
         container('agent') {
           sh '''
+            git submodule update --init --recursive
             aws eks update-kubeconfig --region us-east-1 --name dev-eks-cluster
             sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" k8s/app/three-tier-web-app/k8s/app-deployment.yaml | kubectl apply -f -
             sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" k8s/app/three-tier-web-app/k8s/web-deployment.yaml | kubectl apply -f -
