@@ -60,10 +60,10 @@ pipeline {
         container('agent') {
           sh '''
             aws eks update-kubeconfig --region us-east-1 --name dev-eks-cluster
-            cat k8s/app/three-tier-web-app/k8s/mysql-deployment.yaml | kubectl apply -f -
-            cat k8s/app/three-tier-web-app/k8s/web-deployment.yaml | sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" | kubectl apply -f -
-            cat k8s/app/three-tier-web-app/k8s/app-deployment.yaml | sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" | kubectl apply -f -
-            cat k8s/app/three-tier-web-app/k8s/ingress.yaml | kubectl apply -f -
+            sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" k8s/app/three-tier-web-app/k8s/app-deployment.yaml | kubectl apply -f -
+            sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" k8s/app/three-tier-web-app/k8s/web-deployment.yaml | kubectl apply -f -
+            kubectl apply -f k8s/app/three-tier-web-app/k8s/mysql-deployment.yaml
+            kubectl apply -f k8s/ingress/ingress.yaml
           '''
         }
       }
