@@ -16,8 +16,8 @@ pipeline {
     }
   }
   environment {
-    IMAGE_TAG = "${env.GIT_COMMIT[0..6]}"
-    ECR_REGISTRY = "447777058729.dkr.ecr.us-east-1.amazonaws.com"
+    IMAGE_TAG          = "${env.GIT_COMMIT[0..6]}"
+    ECR_REGISTRY       = "447777058729.dkr.ecr.us-east-1.amazonaws.com"
     AWS_DEFAULT_REGION = "us-east-1"
   }
   triggers {
