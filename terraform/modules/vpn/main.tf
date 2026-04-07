@@ -13,7 +13,7 @@ resource "aws_ec2_client_vpn_endpoint" "main" {
   server_certificate_arn = var.server_cert_arn
   client_cidr_block      = "172.16.0.0/22"
   split_tunnel           = true
-
+  dns_servers            = ["10.0.0.2"]
   authentication_options {
     type                       = "certificate-authentication"
     root_certificate_chain_arn = var.client_cert_arn

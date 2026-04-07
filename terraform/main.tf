@@ -52,3 +52,26 @@ module "vpn" {
   private_subnet_id_1b  = module.vpc.private_subnet_ids[1]
 }
 
+# Route53 Private Hosted Zone
+resource "aws_route53_zone" "private" {
+  name = "volo.pk"
+  vpc {
+    vpc_id = module.vpc.vpc_id
+  }
+}
+
+resource "aws_route53_record" "jenkins" {
+  zone_id = aws_route53_zone.private.zone_id
+  name    = "jenkins.volo.pk"
+  type    = "CNAME"
+  ttl     = 60
+  records = ["internal-k8s-jenkins-jenkinsi-94c822de22-1318029970.us-east-1.elb.amazonaws.com"]
+}
+
+resource "aws_route53_record" "dev" {
+  zone_id = aws_route53_zone.private.zone_id
+  name    = "dev.volo.pk"
+  type    = "CNAME"
+  ttl     = 60
+  records = ["internal-k8s-app-appingre-2dc03c424a-72007598.us-east-1.elb.amazonaws.com"]
+}

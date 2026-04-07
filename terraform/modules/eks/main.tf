@@ -39,7 +39,7 @@ resource "aws_eks_node_group" "jenkins_app" {
   node_group_name = "jenkins-app-ng"
   node_role_arn   = var.node_role_arn
   subnet_ids      = var.private_subnet_ids
-  instance_types  = ["t3.small"]
+  instance_types  = ["t3.medium"]
 
   scaling_config {
     desired_size = 1
@@ -56,7 +56,7 @@ resource "aws_eks_node_group" "jenkins_agents" {
   node_group_name = "jenkins-agents-ng"
   node_role_arn   = var.node_role_arn
   subnet_ids      = var.private_subnet_ids
-  instance_types  = ["t3.small"]
+  instance_types  = ["t3.medium"]
 
   scaling_config {
     desired_size = 1
