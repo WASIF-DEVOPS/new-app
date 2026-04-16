@@ -72,11 +72,21 @@ pipeline {
         }
       }
     }
-    stage('Trivy Scan') {
+    stage('Trivy Scan - Web Image') {
       steps {
         container('agent') {
           sh '''
+            echo "Scanning three-tier-web image..."
             trivy image --exit-code 0 --severity HIGH,CRITICAL $ECR_REGISTRY/three-tier-web:$IMAGE_TAG || true
+          '''
+        }
+      }
+    }
+    stage('Trivy Scan - App Image') {
+      steps {
+        container('agent') {
+          sh '''
+            echo "Scanning three-tier-app image..."
             trivy image --exit-code 0 --severity HIGH,CRITICAL $ECR_REGISTRY/three-tier-app:$IMAGE_TAG || true
           '''
         }
