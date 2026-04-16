@@ -15,8 +15,8 @@ pipeline {
             tty: true
             resources:
               requests:
-                memory: "512Mi"
-                cpu: "500m"
+                memory: "256Mi"
+                cpu: "200m"
               limits:
                 memory: "2Gi"
                 cpu: "1000m"
@@ -30,8 +30,8 @@ pipeline {
               privileged: true
             resources:
               requests:
-                memory: "512Mi"
-                cpu: "500m"
+                memory: "256Mi"
+                cpu: "300m"
               limits:
                 memory: "2Gi"
                 cpu: "1000m"
@@ -126,7 +126,10 @@ pipeline {
         container('agent') {
           sh '''
             aws eks update-kubeconfig --region us-east-1 --name dev-eks-cluster
-            kubectl apply -f "EKS images/tier-app/k8s/k8s/mysql-deployment.yaml"
+            kubectl apply -f "EKS images/tier-app/k8s/k8s/namespaces.yaml"
+            kubectl apply -f "EKS images/tier-app/k8s/k8s/secret-provider-rendered.yaml"
+            kubectl apply -f "EKS images/tier-app/k8s/k8s/mysql-service-rendered.yaml"
+            kubectl delete deployment mysql -n app --ignore-not-found
             sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/tier-app/k8s/k8s/app-deployment.yaml" | kubectl apply -f -
             sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/tier-app/k8s/k8s/web-deployment.yaml" | kubectl apply -f -
           '''

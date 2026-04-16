@@ -16,7 +16,7 @@ spec:
       serviceAccountName: app-sa
       containers:
         - name: app
-          image: 175200623112.dkr.ecr.us-east-1.amazonaws.com/three-tier-app:be2a7c8
+          image: 175200623112.dkr.ecr.us-east-1.amazonaws.com/three-tier-app:IMAGE_TAG_PLACEHOLDER
           ports:
             - containerPort: 4000
           env:
@@ -59,6 +59,17 @@ spec:
               port: 4000
             initialDelaySeconds: 20
             periodSeconds: 10
+          volumeMounts:
+            - name: secrets-store
+              mountPath: /mnt/secrets
+              readOnly: true
+      volumes:
+        - name: secrets-store
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: db-secrets
 
 ---
 apiVersion: v1
