@@ -1,0 +1,34 @@
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+.terraform.lock.hcl
+
+# VPN Certificates & Keys (SENSITIVE)
+terraform/easy-rsa/easyrsa3/pki/private/
+terraform/easy-rsa/easyrsa3/pki/issued/
+terraform/easy-rsa/easyrsa3/pki/reqs/
+terraform/easy-rsa/easyrsa3/pki/certs_by_serial/
+terraform/easy-rsa/easyrsa3/pki/revoked/
+terraform/easy-rsa/easyrsa3/pki/inline/
+terraform/easy-rsa/easyrsa3/pki/ca.crt
+terraform/easy-rsa/easyrsa3/pki/index.txt*
+terraform/easy-rsa/easyrsa3/pki/serial*
+
+# VPN Client Config (SENSITIVE)
+*.ovpn
+*.msi
+
+# Binaries
+*.zip
+*.exe
+terraform/windows-amd64/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

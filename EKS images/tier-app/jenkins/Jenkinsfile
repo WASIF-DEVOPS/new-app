@@ -1,0 +1,159 @@
+pipeline {
+  agent {
+    kubernetes {
+      yaml """
+        apiVersion: v1
+        kind: Pod
+        spec:
+          serviceAccountName: jenkins
+          nodeSelector:
+            role: jenkins-agent
+          containers:
+          - name: agent
+            image: 175200623112.dkr.ecr.us-east-1.amazonaws.com/jenkins-agent:latest
+            command: ['cat']
+            tty: true
+            resources:
+              requests:
+                memory: "512Mi"
+                cpu: "500m"
+              limits:
+                memory: "2Gi"
+                cpu: "1000m"
+            env:
+            - name: DOCKER_HOST
+              value: tcp://localhost:2375
+
+          - name: dind
+            image: docker:24-dind
+            securityContext:
+              privileged: true
+            resources:
+              requests:
+                memory: "512Mi"
+                cpu: "500m"
+              limits:
+                memory: "2Gi"
+                cpu: "1000m"
+            env:
+            - name: DOCKER_TLS_CERTDIR
+              value: ""
+      """
+    }
+  }
+  environment {
+    IMAGE_TAG          = "${env.GIT_COMMIT[0..6]}"
+    ECR_REGISTRY       = "175200623112.dkr.ecr.us-east-1.amazonaws.com"
+    AWS_DEFAULT_REGION = "us-east-1"
+  }
+  triggers {
+    pollSCM('H/5 * * * *')
+  }
+  stages {
+    stage('Build') {
+      steps {
+        container('agent') {
+          sh '''
+            sleep 10
+            docker build -t $ECR_REGISTRY/three-tier-web:$IMAGE_TAG -f "EKS images/3-tier-app/three-tier-web-app/WebLayer/dockerfile" "EKS images/3-tier-app/three-tier-web-app/WebLayer/"
+            docker build -t $ECR_REGISTRY/three-tier-app:$IMAGE_TAG -f "EKS images/3-tier-app/three-tier-web-app/ApplicationLayer/dockerfile" "EKS images/3-tier-app/three-tier-web-app/ApplicationLayer/"
+          '''
+        }
+      }
+    }
+    stage('SonarQube Analysis') {
+      steps {
+        container('agent') {
+          withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
+            sh '''
+              sonar-scanner \
+                -Dsonar.projectKey=three-tier-app \
+                -Dsonar.sources="EKS images/3-tier-app/three-tier-web-app" \
+                -Dsonar.host.url=http://sonarqube-service.jenkins.svc.cluster.local:9000 \
+                -Dsonar.login=$SONAR_TOKEN
+            '''
+          }
+        }
+      }
+    }
+    stage('Test') {
+      steps {
+        container('agent') {
+          sh '''
+            docker run --rm $ECR_REGISTRY/three-tier-app:$IMAGE_TAG python -m pytest tests/ -v || true
+            docker run --rm $ECR_REGISTRY/three-tier-web:$IMAGE_TAG python -m pytest tests/ -v || true
+          '''
+        }
+      }
+    }
+    stage('Trivy Scan - Web Image') {
+      steps {
+        container('agent') {
+          sh '''
+            echo "Scanning three-tier-web image..."
+            trivy image --exit-code 0 --severity HIGH,CRITICAL $ECR_REGISTRY/three-tier-web:$IMAGE_TAG || true
+          '''
+        }
+      }
+    }
+    stage('Trivy Scan - App Image') {
+      steps {
+        container('agent') {
+          sh '''
+            echo "Scanning three-tier-app image..."
+            trivy image --exit-code 0 --severity HIGH,CRITICAL $ECR_REGISTRY/three-tier-app:$IMAGE_TAG || true
+          '''
+        }
+      }
+    }
+    stage('Push') {
+      steps {
+        container('agent') {
+          sh '''
+            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REGISTRY
+            docker push $ECR_REGISTRY/three-tier-web:$IMAGE_TAG
+            docker push $ECR_REGISTRY/three-tier-app:$IMAGE_TAG
+            docker tag $ECR_REGISTRY/three-tier-web:$IMAGE_TAG $ECR_REGISTRY/three-tier-web:latest
+            docker tag $ECR_REGISTRY/three-tier-app:$IMAGE_TAG $ECR_REGISTRY/three-tier-app:latest
+            docker push $ECR_REGISTRY/three-tier-web:latest
+            docker push $ECR_REGISTRY/three-tier-app:latest
+          '''
+        }
+      }
+    }
+    stage('Deploy') {
+      steps {
+        container('agent') {
+          sh '''
+            aws eks update-kubeconfig --region us-east-1 --name dev-eks-cluster
+            kubectl apply -f "EKS images/3-tier-app/k8s/k8s/mysql-deployment.yaml"
+            sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/3-tier-app/k8s/k8s/app-deployment.yaml" | kubectl apply -f -
+            sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/3-tier-app/k8s/k8s/web-deployment.yaml" | kubectl apply -f -
+          '''
+        }
+      }
+    }
+    stage('Smoke Test') {
+      steps {
+        container('agent') {
+          sh '''
+            kubectl rollout status deployment/web -n app --timeout=120s
+            kubectl rollout status deployment/app -n app --timeout=120s
+            kubectl get pods -n app
+          '''
+        }
+      }
+    }
+  }
+  post {
+    success {
+      echo "Pipeline succeeded — Image tag: ${IMAGE_TAG}"
+    }
+    failure {
+      echo "Pipeline FAILED — Branch: ${env.BRANCH_NAME}, Tag: ${IMAGE_TAG}"
+    }
+    always {
+      cleanWs()
+    }
+  }
+}
