@@ -1,5 +1,0 @@
-urllib3==1.26.18
-Flask
-Flask-SQLAlchemy
-mysql-connector-python
-requests
