@@ -55,8 +55,8 @@ pipeline {
         container('agent') {
           sh '''
             sleep 10
-            docker build -t $ECR_REGISTRY/three-tier-web:$IMAGE_TAG -f "EKS images/3-tier-app/three-tier-web-app/WebLayer/dockerfile" "EKS images/3-tier-app/three-tier-web-app/WebLayer/"
-            docker build -t $ECR_REGISTRY/three-tier-app:$IMAGE_TAG -f "EKS images/3-tier-app/three-tier-web-app/ApplicationLayer/dockerfile" "EKS images/3-tier-app/three-tier-web-app/ApplicationLayer/"
+            docker build -t $ECR_REGISTRY/three-tier-web:$IMAGE_TAG -f "EKS images/tier-app/three-tier-web-app/WebLayer/dockerfile" "EKS images/tier-app/three-tier-web-app/WebLayer/"
+            docker build -t $ECR_REGISTRY/three-tier-app:$IMAGE_TAG -f "EKS images/tier-app/three-tier-web-app/ApplicationLayer/dockerfile" "EKS images/tier-app/three-tier-web-app/ApplicationLayer/"
           '''
         }
       }
@@ -68,9 +68,9 @@ pipeline {
             sh '''
               sonar-scanner \
                 -Dsonar.projectKey=three-tier-app \
-                -Dsonar.sources="EKS images/3-tier-app/three-tier-web-app" \
+                -Dsonar.sources="EKS images/tier-app/three-tier-web-app" \
                 -Dsonar.host.url=http://sonarqube-service.jenkins.svc.cluster.local:9000 \
-                -Dsonar.login=$SONAR_TOKEN
+                -Dsonar.token=$SONAR_TOKEN
             '''
           }
         }
@@ -126,9 +126,9 @@ pipeline {
         container('agent') {
           sh '''
             aws eks update-kubeconfig --region us-east-1 --name dev-eks-cluster
-            kubectl apply -f "EKS images/3-tier-app/k8s/k8s/mysql-deployment.yaml"
-            sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/3-tier-app/k8s/k8s/app-deployment.yaml" | kubectl apply -f -
-            sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/3-tier-app/k8s/k8s/web-deployment.yaml" | kubectl apply -f -
+            kubectl apply -f "EKS images/tier-app/k8s/k8s/mysql-deployment.yaml"
+            sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/tier-app/k8s/k8s/app-deployment.yaml" | kubectl apply -f -
+            sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/tier-app/k8s/k8s/web-deployment.yaml" | kubectl apply -f -
           '''
         }
       }
