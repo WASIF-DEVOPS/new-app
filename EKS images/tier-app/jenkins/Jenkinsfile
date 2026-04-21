@@ -131,12 +131,12 @@ pipeline {
         container('agent') {
           sh '''
             aws eks update-kubeconfig --region us-east-1 --name dev-eks-cluster
-            kubectl apply -f "EKS images/tier-app/k8s/k8s/namespaces.yaml"
-            kubectl apply -f "EKS images/tier-app/k8s/k8s/app-serviceaccount-rendered.yaml"
-            kubectl apply -f "EKS images/tier-app/k8s/k8s/mysql-service-rendered.yaml"
+            kubectl apply --validate=false -f "EKS images/tier-app/k8s/k8s/namespaces.yaml"
+            kubectl apply --validate=false -f "EKS images/tier-app/k8s/k8s/app-serviceaccount-rendered.yaml"
+            kubectl apply --validate=false -f "EKS images/tier-app/k8s/k8s/mysql-service-rendered.yaml"
             kubectl delete deployment mysql -n app --ignore-not-found
-            sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/tier-app/k8s/k8s/app-deployment.yaml" | kubectl apply -f -
-            sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/tier-app/k8s/k8s/web-deployment.yaml" | kubectl apply -f -
+            sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/tier-app/k8s/k8s/app-deployment.yaml" | kubectl apply --validate=false -f -
+            sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/tier-app/k8s/k8s/web-deployment.yaml" | kubectl apply --validate=false -f -
           '''
         }
       }
