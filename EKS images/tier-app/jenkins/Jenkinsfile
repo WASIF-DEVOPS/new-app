@@ -136,11 +136,6 @@ pipeline {
             kubectl delete deployment mysql -n app --ignore-not-found
             sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/tier-app/k8s/k8s/app-deployment.yaml" | kubectl apply --validate=false -f -
             sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/tier-app/k8s/k8s/web-deployment.yaml" | kubectl apply --validate=false -f -
-            kubectl apply --validate=false -f "EKS images/tier-app/k8s/k8s/app-serviceaccount-rendered.yaml"
-            kubectl apply --validate=false -f "EKS images/tier-app/k8s/k8s/mysql-service-rendered.yaml"
-            kubectl delete deployment mysql -n app --ignore-not-found
-            sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/tier-app/k8s/k8s/app-deployment.yaml" | kubectl apply --validate=false -f -
-            sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/tier-app/k8s/k8s/web-deployment.yaml" | kubectl apply --validate=false -f -
           '''
         }
       }
