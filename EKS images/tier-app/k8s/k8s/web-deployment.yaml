@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: 175200623112.dkr.ecr.us-east-1.amazonaws.com/three-tier-web:IMAGE_TAG_PLACEHOLDER
+          image: 175200623112.dkr.ecr.us-east-1.amazonaws.com/three-tier-web:33caebf
           ports:
             - containerPort: 5000
           env:

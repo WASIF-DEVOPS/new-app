@@ -16,30 +16,22 @@ spec:
       serviceAccountName: app-sa
       containers:
         - name: app
-          image: 175200623112.dkr.ecr.us-east-1.amazonaws.com/three-tier-app:IMAGE_TAG_PLACEHOLDER
+          image: 175200623112.dkr.ecr.us-east-1.amazonaws.com/three-tier-app:33caebf
           ports:
             - containerPort: 4000
           env:
-            - name: DB_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: db-secret
-                  key: DB_HOST
+            - name: AWS_REGION
+              value: "us-east-1"
+            - name: DB_SECRET_NAME
+              value: "dev/three-tier-app/db"
             - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: db-secret
-                  key: DB_USER
+              value: "appuser"
             - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: db-secret
-                  key: DB_PASSWORD
+              value: "StrongPass123"
+            - name: DB_HOST
+              value: "dev-mysql.cmtgwe8q2w1g.us-east-1.rds.amazonaws.com"
             - name: DB_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: db-secret
-                  key: DB_NAME
+              value: "appdb"
           resources:
             requests:
               cpu: "100m"

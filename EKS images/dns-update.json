@@ -1,0 +1,40 @@
+{
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "jenkins.volo.pk",
+        "Type": "CNAME",
+        "TTL": 60,
+        "ResourceRecords": [{"Value": "internal-k8s-jenkins-jenkinsi-94c822de22-846332888.us-east-1.elb.amazonaws.com"}]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "dev.volo.pk",
+        "Type": "CNAME",
+        "TTL": 60,
+        "ResourceRecords": [{"Value": "internal-k8s-app-appingre-2dc03c424a-1048186145.us-east-1.elb.amazonaws.com"}]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "grafana.volo.pk",
+        "Type": "CNAME",
+        "TTL": 60,
+        "ResourceRecords": [{"Value": "internal-k8s-monitori-grafanai-7f89f68947-1124462303.us-east-1.elb.amazonaws.com"}]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "prometheus.volo.pk",
+        "Type": "CNAME",
+        "TTL": 60,
+        "ResourceRecords": [{"Value": "internal-k8s-monitori-promethe-cfb974a2b8-19293136.us-east-1.elb.amazonaws.com"}]
+      }
+    }
+  ]
+}

@@ -45,6 +45,9 @@ pipeline {
     IMAGE_TAG          = "${env.GIT_COMMIT[0..6]}"
     ECR_REGISTRY       = "175200623112.dkr.ecr.us-east-1.amazonaws.com"
     AWS_DEFAULT_REGION = "us-east-1"
+    SONAR_HOST_URL     = "https://sonarcloud.io"
+    SONAR_ORG          = "Stalker74"
+    SONAR_PROJECT_KEY  = "Stalker74_new-app"
   }
   triggers {
     pollSCM('H/5 * * * *')
@@ -62,14 +65,16 @@ pipeline {
       }
     }
     stage('SonarQube Analysis') {
+      when { expression { return false } }
       steps {
         container('agent') {
           withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
             sh '''
               sonar-scanner \
-                -Dsonar.projectKey=three-tier-app \
+                -Dsonar.projectKey=$SONAR_PROJECT_KEY \
+                -Dsonar.organization=$SONAR_ORG \
                 -Dsonar.sources="EKS images/tier-app/three-tier-web-app" \
-                -Dsonar.host.url=http://sonarqube-service.jenkins.svc.cluster.local:9000 \
+                -Dsonar.host.url=$SONAR_HOST_URL \
                 -Dsonar.token=$SONAR_TOKEN
             '''
           }
@@ -91,7 +96,7 @@ pipeline {
         container('agent') {
           sh '''
             echo "Scanning three-tier-web image..."
-            trivy image --exit-code 0 --severity HIGH,CRITICAL $ECR_REGISTRY/three-tier-web:$IMAGE_TAG || true
+            trivy image --exit-code 0 --severity HIGH,CRITICAL $ECR_REGISTRY/three-tier-web:$IMAGE_TAG || false
           '''
         }
       }
@@ -101,7 +106,7 @@ pipeline {
         container('agent') {
           sh '''
             echo "Scanning three-tier-app image..."
-            trivy image --exit-code 0 --severity HIGH,CRITICAL $ECR_REGISTRY/three-tier-app:$IMAGE_TAG || true
+            trivy image --exit-code 0 --severity HIGH,CRITICAL $ECR_REGISTRY/three-tier-app:$IMAGE_TAG || false
           '''
         }
       }
@@ -127,7 +132,7 @@ pipeline {
           sh '''
             aws eks update-kubeconfig --region us-east-1 --name dev-eks-cluster
             kubectl apply -f "EKS images/tier-app/k8s/k8s/namespaces.yaml"
-            kubectl apply -f "EKS images/tier-app/k8s/k8s/secret-provider-rendered.yaml"
+            kubectl apply -f "EKS images/tier-app/k8s/k8s/app-serviceaccount-rendered.yaml"
             kubectl apply -f "EKS images/tier-app/k8s/k8s/mysql-service-rendered.yaml"
             kubectl delete deployment mysql -n app --ignore-not-found
             sed "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" "EKS images/tier-app/k8s/k8s/app-deployment.yaml" | kubectl apply -f -

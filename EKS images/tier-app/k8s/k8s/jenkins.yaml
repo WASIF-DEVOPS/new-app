@@ -50,13 +50,18 @@ spec:
           ports:
             - containerPort: 8080
             - containerPort: 50000
+          env:
+            - name: JAVA_OPTS
+              value: "-Xmx1536m -Xms512m -Dhudson.slaves.NodeProvisioner.initialDelay=0"
+            - name: JENKINS_OPTS
+              value: "--sessionTimeout=0"
           resources:
             requests:
               cpu: "500m"
-              memory: "1Gi"
+              memory: "1.5Gi"
             limits:
-              cpu: "1000m"
-              memory: "2Gi"
+              cpu: "1500m"
+              memory: "2.5Gi"
           volumeMounts:
             - name: jenkins-data
               mountPath: /var/jenkins_home

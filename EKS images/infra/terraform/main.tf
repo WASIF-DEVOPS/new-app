@@ -107,19 +107,25 @@ resource "aws_route53_record" "eks_endpoint" {
   records = ["32.192.120.190", "34.236.10.236"]
 }
 
-resource "local_file" "secret_provider" {
-  content = templatefile("${path.root}/../../3-tier app/k8s/k8s/secret-provider.yaml", {
+resource "local_file" "app_serviceaccount" {
+  content = templatefile("${path.root}/../../tier-app/k8s/k8s/app-serviceaccount.yaml", {
     app_irsa_role_arn = module.iam_irsa.app_irsa_role_arn
   })
-  filename = "${path.root}/../../3-tier app/k8s/k8s/secret-provider-rendered.yaml"
+  filename = "${path.root}/../../tier-app/k8s/k8s/app-serviceaccount-rendered.yaml"
 }
 
 resource "local_file" "mysql_service" {
-  content = templatefile("${path.root}/../../3-tier app/k8s/k8s/mysql-deployment.yaml", {
+  content = templatefile("${path.root}/../../tier-app/k8s/k8s/mysql-deployment.yaml", {
     rds_endpoint = module.rds.rds_endpoint
   })
-  filename = "${path.root}/../../3-tier app/k8s/k8s/mysql-service-rendered.yaml"
+  filename = "${path.root}/../../tier-app/k8s/k8s/mysql-service-rendered.yaml"
 }
 
 output "rds_endpoint"     { value = module.rds.rds_endpoint }
 output "eks_cluster_name" { value = module.eks.cluster_name }
+
+resource "aws_eks_addon" "ebs_csi" {
+  cluster_name             = module.eks.cluster_name
+  addon_name               = "aws-ebs-csi-driver"
+  service_account_role_arn = module.iam_irsa.ebs_csi_role_arn
+}
