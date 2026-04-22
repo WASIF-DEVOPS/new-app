@@ -57,5 +57,5 @@ aws-auth-patch.yaml
 change-batch.json
 *-trust-policy.json
 
-# Old architecture docs (superseded by EKS images/ARCHITECTURE.md)
-ARCHITECTURE.md
+# Old architecture doc at repo root (outdated, superseded by EKS images/ARCHITECTURE.md)
+/ARCHITECTURE.md
