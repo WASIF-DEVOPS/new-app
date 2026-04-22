@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3508" pageHeight="2480" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- ======================================================== -->
+    <!--          EXTERNAL SERVICES ROW (above AWS Cloud)          -->
+    <!-- ======================================================== -->
+
+    <!-- Developer Machine -->
+    <mxCell id="dev_icon" value="Developer Machine&#xa;Windows | AWS CLI&#xa;kubectl | helm | terraform&#xa;OpenVPN Client" style="shape=mxgraph.cisco.computers_and_peripherals.pc;fillColor=#1565C0;strokeColor=#0D47A1;fontColor=#ffffff;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="60" y="30" width="70" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- GitHub -->
+    <mxCell id="github_icon" value="GitHub&#xa;WASIF-DEVOPS/new-app&#xa;branch: main" style="shape=mxgraph.logos.github;fillColor=#24292E;strokeColor=none;fontColor=#24292E;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="260" y="30" width="70" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- SonarCloud -->
+    <mxCell id="sonar_icon" value="SonarCloud&#xa;sonarcloud.io&#xa;Org: Stalker74" style="shape=mxgraph.logos.sonarqube;fillColor=#FF6D00;strokeColor=none;fontColor=#0075A8;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="460" y="30" width="70" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- Terraform -->
+    <mxCell id="tf_icon_ext" value="Terraform IaC&#xa;hashicorp/aws ≥5.0&#xa;6 Modules" style="shape=mxgraph.logos.terraform;fillColor=#7B42BC;strokeColor=none;fontColor=#7B42BC;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="660" y="30" width="70" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- Python / Flask -->
+    <mxCell id="python_icon_ext" value="Python / Flask&#xa;WebLayer :5000&#xa;AppLayer :4000" style="shape=mxgraph.logos.python;fillColor=#3776AB;strokeColor=none;fontColor=#3776AB;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="860" y="30" width="70" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- Docker -->
+    <mxCell id="docker_icon_ext" value="Docker Images&#xa;docker:24-dind&#xa;3-tier-web/app" style="shape=mxgraph.logos.docker;fillColor=#0db7ed;strokeColor=none;fontColor=#0db7ed;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1060" y="30" width="70" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- Kubernetes -->
+    <mxCell id="k8s_icon_ext" value="Kubernetes&#xa;EKS v1.31&#xa;9 Manifests" style="shape=mxgraph.logos.kubernetes;fillColor=#326CE5;strokeColor=none;fontColor=#326CE5;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1260" y="30" width="70" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- Jenkins -->
+    <mxCell id="jenkins_icon_ext" value="Jenkins LTS&#xa;CI/CD Controller&#xa;pollSCM H/5" style="shape=mxgraph.logos.jenkins;fillColor=#D33833;strokeColor=none;fontColor=#D33833;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1460" y="30" width="70" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- Prometheus -->
+    <mxCell id="prom_icon_ext" value="Prometheus&#xa;kube-prometheus&#xa;Port 9090" style="shape=mxgraph.logos.prometheus;fillColor=#E6522C;strokeColor=none;fontColor=#E6522C;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1660" y="30" width="70" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- Grafana -->
+    <mxCell id="grafana_icon_ext" value="Grafana&#xa;prometheus-grafana&#xa;Port 80" style="shape=mxgraph.logos.grafana;fillColor=#F46800;strokeColor=none;fontColor=#F46800;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1860" y="30" width="70" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- MySQL -->
+    <mxCell id="mysql_icon_ext" value="MySQL 8.0&#xa;RDS db.t3.micro&#xa;DB: appdb" style="shape=mxgraph.logos.mysql;fillColor=#00758F;strokeColor=none;fontColor=#00758F;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="2060" y="30" width="70" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- ======================================================== -->
+    <!--                     AWS CLOUD BOUNDARY                    -->
+    <!-- ======================================================== -->
+    <mxCell id="aws_cloud" value="AWS Cloud — us-east-1  |  Account: 175200623112" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud_alt;strokeColor=#232F3E;fillColor=#FAFAFA;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="10" y="170" width="3480" height="2290" as="geometry" />
+    </mxCell>
+
+    <!-- S3 Terraform Backend (top-right corner inside AWS) -->
+    <mxCell id="s3_backend_icon" value="S3 — Terraform State&#xa;175200623112-terraform-state&#xa;eks-project/terraform.tfstate" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#3F8624;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="3300" y="195" width="60" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- ======================================================== -->
+    <!--                          VPC                              -->
+    <!-- ======================================================== -->
+    <mxCell id="vpc" value="VPC — dev-eks-vpc  |  10.0.0.0/16  +  Secondary CIDR: 10.1.0.0/22  |  DNS Hostnames: enabled" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_vpc;strokeColor=#8C4FFF;fillColor=#F5F0FF;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="225" width="2650" height="2215" as="geometry" />
+    </mxCell>
+
+    <!-- ======================================================== -->
+    <!--               PUBLIC SUBNET A  (us-east-1a)              -->
+    <!-- ======================================================== -->
+    <mxCell id="pub_a" value="Public Subnet A  |  us-east-1a  |  10.0.101.0/24  |  Tag: k8s/role/elb=1" style="shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_public_subnet;strokeColor=#007CBC;fillColor=#E6F3FB;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="55" y="295" width="490" height="230" as="geometry" />
+    </mxCell>
+
+    <!-- Internet Gateway icon -->
+    <mxCell id="igw_icon" value="Internet Gateway" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#8C4FFF;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.internet_gateway;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="80" y="345" width="60" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- NAT Gateway icon -->
+    <mxCell id="nat_icon" value="NAT Gateway&#xa;Single (cost-opt)" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#8C4FFF;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.nat_gateway;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="230" y="345" width="60" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- EIP badge -->
+    <mxCell id="eip_badge" value="EIP: 52.86.163.193&#xa;(OpenVPN Public IP)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=9;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="370" y="360" width="160" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- ======================================================== -->
+    <!--               PUBLIC SUBNET B  (us-east-1b)              -->
+    <!-- ======================================================== -->
+    <mxCell id="pub_b" value="Public Subnet B  |  us-east-1b  |  10.0.102.0/24  |  Tag: k8s/role/elb=1" style="shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_public_subnet;strokeColor=#007CBC;fillColor=#E6F3FB;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="575" y="295" width="480" height="230" as="geometry" />
+    </mxCell>
+
+    <!-- OpenVPN EC2 icon -->
+    <mxCell id="openvpn_ec2_icon" value="OpenVPN EC2&#xa;t3.micro" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#ED7100;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ec2;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="600" y="340" width="60" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- OpenVPN detail -->
+    <mxCell id="openvpn_detail" value="Private IP: 10.0.102.203&#xa;Public IP:  52.86.163.193&#xa;Protocol:  UDP 1194&#xa;VPN Pool:  10.8.0.0/24&#xa;Route push: 10.0.0.0/16&#xa;DNS push:   10.0.0.2" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#FF6600;fillColor=#FFE8CC;rounded=1;fontSize=9;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="680" y="320" width="355" height="120" as="geometry" />
+    </mxCell>
+
+    <!-- ======================================================== -->
+    <!--                  EKS CONTROL PLANE                        -->
+    <!-- ======================================================== -->
+    <mxCell id="eks_cp_box" value="EKS Control Plane  (AWS Managed)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F4FD;strokeColor=#0078D4;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1095" y="285" width="860" height="255" as="geometry" />
+    </mxCell>
+
+    <!-- EKS icon -->
+    <mxCell id="eks_icon" value="Amazon EKS&#xa;dev-eks-cluster&#xa;v1.31 | Private Only" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#ED7100;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.eks;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1115" y="325" width="60" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- CloudWatch Logs icon -->
+    <mxCell id="cw_icon" value="CloudWatch Logs&#xa;api|audit|auth&#xa;ctrlMgr|scheduler" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#E7157B;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=9;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1225" y="325" width="60" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- OIDC Provider icon -->
+    <mxCell id="oidc_icon" value="OIDC Provider&#xa;IRSA for all SAs" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#DD344C;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=9;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1335" y="325" width="60" height="60" as="geometry" />
+    </mxCell>
+
+    <mxCell id="eks_detail" value="endpoint_private_access=true | endpoint_public_access=false&#xa;SG Rule: allow kubectl :443 from 10.0.0.0/16 + 10.1.0.0/22&#xa;OIDC → sts:AssumeRoleWithWebIdentity for all IRSA roles&#xa;Cleanup: null_resource destroys K8s resources before destroy" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1420" y="325" width="525" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- ======================================================== -->
+    <!--              ALB — INTERNAL LOAD BALANCER                  -->
+    <!-- ======================================================== -->
+    <mxCell id="alb_box" value="ALB — Internal  (AWS Load Balancer Controller)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0E6FF;strokeColor=#8C4FFF;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1995" y="285" width="670" height="255" as="geometry" />
+    </mxCell>
+
+    <!-- ALB icon -->
+    <mxCell id="alb_icon" value="Application&#xa;Load Balancer&#xa;Internal" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#8C4FFF;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.application_load_balancer;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="2010" y="320" width="60" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- ACM icon on ALB -->
+    <mxCell id="acm_alb_icon" value="ACM&#xa;*.volo.pk" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#DD344C;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=9;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.certificate_manager;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="2100" y="325" width="50" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="alb_detail" value="Scheme: internal  |  Target-type: ip  |  HTTPS 443 (HTTP→HTTPS redirect)&#xa;jenkins.volo.pk    → jenkins-svc:8080  (healthcheck: /login)&#xa;dev.volo.pk          → web-service:80    (healthcheck: /)&#xa;prometheus.volo.pk → prom-svc:9090    (healthcheck: /-/healthy)&#xa;grafana.volo.pk      → grafana-svc:80    (healthcheck: /api/health)&#xa;sonar.volo.pk         → sonarqube-svc:9000" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="2170" y="300" width="485" height="130" as="geometry" />
+    </mxCell>
+
+    <!-- ======================================================== -->
+    <!--           PRIVATE SUBNET A  (us-east-1a)                  -->
+    <!-- ======================================================== -->
+    <mxCell id="priv_a" value="Private Subnet A  |  us-east-1a  |  10.0.1.0/24  |  Tags: k8s/role/internal-elb=1  |  k8s/cluster/dev-eks-cluster=owned" style="shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_private_subnet;strokeColor=#147EBA;fillColor=#E0F0FB;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="55" y="570" width="1030" height="1840" as="geometry" />
+    </mxCell>
+
+    <!-- Node Group 1 Box -->
+    <mxCell id="ng1_box" value="EKS Node Group: jenkins-app-ng  |  t3.medium  |  desired=1  min=1  max=2  |  label: role=jenkins-app" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DDEEFF;strokeColor=#147EBA;fontSize=11;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="75" y="635" width="990" height="1750" as="geometry" />
+    </mxCell>
+
+    <!-- K8s node icon NG1 -->
+    <mxCell id="k8s_ng1" value="Node" style="shape=mxgraph.logos.kubernetes;fillColor=#326CE5;strokeColor=none;html=1;fontSize=9;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="95" y="676" width="40" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- ========== NAMESPACE: jenkins ========== -->
+    <mxCell id="ns_jenkins" value="Namespace: jenkins" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6F0;strokeColor=#E7157B;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="95" y="745" width="950" height="410" as="geometry" />
+    </mxCell>
+
+    <!-- Jenkins Master icon -->
+    <mxCell id="jenkins_master_icon" value="jenkins/jenkins:lts&#xa;Deployment: jenkins&#xa;Replicas: 1" style="shape=mxgraph.logos.jenkins;fillColor=#D33833;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="120" y="800" width="70" height="70" as="geometry" />
+    </mxCell>
+
+    <mxCell id="jenkins_master_detail" value="nodeSelector: role=jenkins-app  |  Port: 8080 (HTTP) + 50000 (JNLP)&#xa;Resources: req=500m/1.5Gi  |  lim=1500m/2.5Gi&#xa;JAVA_OPTS: -Xmx1536m -Xms512m -Dhudson.slaves.NodeProvisioner.initialDelay=0&#xa;securityContext: fsGroup=1000 runAsUser=1000&#xa;Service: jenkins ClusterIP  :8080 + :50000&#xa;Ingress: jenkins.volo.pk → jenkins:8080  (healthcheck /login, codes 200,302)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="210" y="798" width="825" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- Jenkins IAM/IRSA icon -->
+    <mxCell id="jenkins_irsa_icon" value="SA: jenkins&#xa;IRSA role" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#DD344C;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=9;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="120" y="940" width="50" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="jenkins_irsa_detail" value="eks.amazonaws.com/role-arn: …/dev-eks-cluster-jenkins-irsa&#xa;Permissions: ECR push+pull (GetAuthorizationToken, PutImage…) + EKS:DescribeCluster&#xa;SA used by: Jenkins master pod + agent pods (K8s plugin)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="185" y="945" width="460" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- EBS icon for Jenkins PVC -->
+    <mxCell id="ebs_jenkins_icon" value="PVC: jenkins-pvc&#xa;gp2-ebs / 20Gi" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#3F8624;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=9;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ebs;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="680" y="935" width="50" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="ebs_jenkins_detail" value="StorageClass: gp2-ebs (default)&#xa;accessMode: ReadWriteOnce&#xa;Mount: /var/jenkins_home&#xa;Provisioner: ebs.csi.aws.com" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="745" y="940" width="290" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- ========== NAMESPACE: app ========== -->
+    <mxCell id="ns_app" value="Namespace: app  (Three-Tier Application)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6FFE6;strokeColor=#1A9C3E;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="95" y="1190" width="950" height="470" as="geometry" />
+    </mxCell>
+
+    <!-- Web Pod Python icon -->
+    <mxCell id="web_pod_icon" value="WebLayer (x2)&#xa;Flask :5000" style="shape=mxgraph.logos.python;fillColor=#3776AB;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="120" y="1250" width="70" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="web_pod_detail" value="Deployment: web  |  Replicas: 2&#xa;Image: 175200623112.dkr.ecr…/three-tier-web:33caebf  |  Port: 5000&#xa;ENV: APP_URL=http://app-service:4000&#xa;Resources: req=100m/128Mi  lim=500m/512Mi&#xa;Probes: readiness+liveness → GET / port 5000&#xa;Service: web-service ClusterIP :80→5000&#xa;Ingress: dev.volo.pk → web-service:80" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="210" y="1248" width="825" height="110" as="geometry" />
+    </mxCell>
+
+    <!-- App SA IRSA -->
+    <mxCell id="app_sa_icon" value="SA: app-sa&#xa;IRSA" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#DD344C;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=9;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="120" y="1400" width="50" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="app_sa_detail" value="IRSA → dev-eks-cluster-app-irsa&#xa;Perms: secretsmanager:GetSecretValue + DescribeSecret (scoped to dev/three-tier-app/db ARN)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="185" y="1405" width="480" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- App Pod Python icon -->
+    <mxCell id="app_pod_icon" value="AppLayer (x2)&#xa;Flask :4000" style="shape=mxgraph.logos.python;fillColor=#3776AB;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="580" y="1395" width="70" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="app_pod_detail" value="Deployment: app  |  Replicas: 2  |  serviceAccountName: app-sa&#xa;Image: .../three-tier-app:33caebf  |  Port: 4000&#xa;ENV: DB_HOST=dev-mysql.cmtgwe8q2w1g.us-east-1.rds.amazonaws.com&#xa;     DB_NAME=appdb  DB_USER=appuser  DB_SECRET_NAME=dev/three-tier-app/db&#xa;Probes: /health port 4000  |  Service: app-service ClusterIP :4000" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="665" y="1393" width="370" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- MySQL ExternalName service -->
+    <mxCell id="mysql_svc_icon" value="MySQL ExternalName&#xa;Service (rendered)" style="shape=mxgraph.logos.mysql;fillColor=#00758F;strokeColor=none;html=1;fontSize=9;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="120" y="1555" width="60" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="mysql_svc_detail" value="mysql-service-rendered.yaml (generated by Terraform local_file)&#xa;ExternalName → dev-mysql.cmtgwe8q2w1g.us-east-1.rds.amazonaws.com:3306" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="200" y="1558" width="830" height="45" as="geometry" />
+    </mxCell>
+
+    <!-- ========== NAMESPACE: monitoring ========== -->
+    <mxCell id="ns_monitoring" value="Namespace: monitoring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF6D00;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="95" y="1695" width="950" height="270" as="geometry" />
+    </mxCell>
+
+    <!-- Prometheus icon -->
+    <mxCell id="prom_icon" value="Prometheus&#xa;Port 9090" style="shape=mxgraph.logos.prometheus;fillColor=#E6522C;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="120" y="1755" width="70" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="prom_detail" value="kube-prometheus-stack (Helm)&#xa;Service: prometheus-kube-prometheus-prometheus&#xa;Ingress: prometheus.volo.pk → :9090  (hc: /-/healthy)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="210" y="1763" width="380" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- Grafana icon -->
+    <mxCell id="grafana_icon" value="Grafana&#xa;Port 80" style="shape=mxgraph.logos.grafana;fillColor=#F46800;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="600" y="1755" width="70" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="grafana_detail" value="prometheus-grafana (Helm)&#xa;Service: prometheus-grafana&#xa;Ingress: grafana.volo.pk → :80  (hc: /api/health)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="690" y="1763" width="345" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- ========== NAMESPACE: kube-system ========== -->
+    <mxCell id="ns_kubesys" value="Namespace: kube-system  (Controllers + Storage)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0E6FF;strokeColor=#8C4FFF;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="95" y="1995" width="950" height="360" as="geometry" />
+    </mxCell>
+
+    <!-- ALB Controller: K8s + ALB icons -->
+    <mxCell id="alb_ctrl_k8s" value="ALB Controller" style="shape=mxgraph.logos.kubernetes;fillColor=#326CE5;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="120" y="2060" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="alb_ctrl_aws" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#8C4FFF;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=9;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.application_load_balancer;" vertex="1" parent="1">
+      <mxGeometry x="200" y="2070" width="45" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="alb_ctrl_detail" value="aws-load-balancer-controller  |  SA: kube-system:aws-load-balancer-controller&#xa;IRSA: dev-eks-cluster-alb-controller  →  AWSLoadBalancerControllerIAMPolicy&#xa;Watches Ingress objects → provisions AWS Internal ALB automatically" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="260" y="2062" width="775" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- EBS CSI: K8s + EBS icons -->
+    <mxCell id="ebs_csi_k8s" value="EBS CSI Driver" style="shape=mxgraph.logos.kubernetes;fillColor=#326CE5;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="120" y="2175" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="ebs_csi_aws" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#3F8624;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=9;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ebs;" vertex="1" parent="1">
+      <mxGeometry x="200" y="2185" width="45" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="ebs_csi_detail" value="aws-ebs-csi-driver  (aws_eks_addon)  |  SA: kube-system:ebs-csi-controller-sa&#xa;IRSA: dev-eks-cluster-ebs-csi-role  →  AmazonEBSCSIDriverPolicy&#xa;StorageClass: gp2-ebs  |  provisioner: ebs.csi.aws.com  |  VolumeBindingMode: WaitForFirstConsumer&#xa;storageclass.kubernetes.io/is-default-class: true" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="260" y="2178" width="775" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- ======================================================== -->
+    <!--           PRIVATE SUBNET B  (us-east-1b)                  -->
+    <!-- ======================================================== -->
+    <mxCell id="priv_b" value="Private Subnet B  |  us-east-1b  |  10.0.2.0/24  |  Tags: k8s/role/internal-elb=1  |  k8s/cluster/dev-eks-cluster=owned" style="shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_private_subnet;strokeColor=#147EBA;fillColor=#E0F0FB;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="1125" y="570" width="1530" height="1840" as="geometry" />
+    </mxCell>
+
+    <!-- Node Group 2 Box -->
+    <mxCell id="ng2_box" value="EKS Node Group: jenkins-agents-ng  |  t3.medium  |  desired=2  min=2  max=3  |  label: role=jenkins-agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DDEEFF;strokeColor=#147EBA;fontSize=11;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1145" y="635" width="1490" height="1100" as="geometry" />
+    </mxCell>
+
+    <!-- K8s node icon NG2 -->
+    <mxCell id="k8s_ng2" value="Node" style="shape=mxgraph.logos.kubernetes;fillColor=#326CE5;strokeColor=none;html=1;fontSize=9;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1165" y="676" width="40" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- ========== CI/CD AGENT POD ========== -->
+    <mxCell id="agent_pod_box" value="CI/CD Agent Pod  (spawned by Jenkins Kubernetes Plugin  on each pipeline run)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6F0;strokeColor=#E7157B;fontSize=11;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1165" y="735" width="1460" height="380" as="geometry" />
+    </mxCell>
+
+    <!-- Jenkins Agent icon -->
+    <mxCell id="agent_jenkins_icon" value="Container: agent&#xa;jenkins-agent:latest" style="shape=mxgraph.logos.jenkins;fillColor=#D33833;strokeColor=none;html=1;fontSize=9;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1190" y="800" width="65" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- Docker CLI icon in agent -->
+    <mxCell id="agent_docker_icon" value="Docker CLI&#xa;(from docker:24-cli)" style="shape=mxgraph.logos.docker;fillColor=#0db7ed;strokeColor=none;html=1;fontSize=9;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1290" y="800" width="65" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- kubectl in agent -->
+    <mxCell id="agent_kubectl_icon" value="kubectl&#xa;(latest stable)" style="shape=mxgraph.logos.kubernetes;fillColor=#326CE5;strokeColor=none;html=1;fontSize=9;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1390" y="800" width="65" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- AWS CLI in agent -->
+    <mxCell id="agent_awscli_icon" value="AWS CLI v2" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#ED7100;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=9;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.management_console;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1490" y="805" width="55" height="55" as="geometry" />
+    </mxCell>
+
+    <!-- Trivy in agent -->
+    <mxCell id="agent_trivy_badge" value="🔍 Trivy Scanner&#xa;aquasecurity/trivy&#xa;--severity HIGH,CRITICAL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FADBD8;strokeColor=#DD344C;fontSize=9;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="1570" y="808" width="180" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- SonarQube Scanner in agent -->
+    <mxCell id="agent_sonar_icon" value="sonar-scanner&#xa;CLI 5.0.1" style="shape=mxgraph.logos.sonarqube;fillColor=#0075A8;strokeColor=none;html=1;fontSize=9;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1775" y="800" width="65" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- Python pytest in agent -->
+    <mxCell id="agent_pytest_icon" value="pytest&#xa;(test stage)" style="shape=mxgraph.logos.python;fillColor=#3776AB;strokeColor=none;html=1;fontSize=9;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1875" y="800" width="65" height="65" as="geometry" />
+    </mxCell>
+
+    <mxCell id="agent_base_detail" value="Base: jenkins/inbound-agent:latest-jdk17  |  DOCKER_HOST: tcp://localhost:2375&#xa;Resources: req=200m/256Mi  lim=1000m/2Gi  |  serviceAccountName: jenkins (IRSA: ECR auth)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1975" y="810" width="635" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- DinD sidecar -->
+    <mxCell id="dind_box" value="Sidecar: docker:24-dind  (Docker-in-Docker)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1165" y="930" width="860" height="160" as="geometry" />
+    </mxCell>
+
+    <mxCell id="dind_docker_icon" value="docker:24-dind&#xa;Docker Daemon" style="shape=mxgraph.logos.docker;fillColor=#0db7ed;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1195" y="975" width="70" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="dind_detail" value="securityContext: privileged=true  |  DOCKER_TLS_CERTDIR=&quot;&quot; (TLS disabled)&#xa;Resources: req=300m/256Mi  lim=1000m/2Gi&#xa;Exposes Docker daemon on tcp://localhost:2375&#xa;Agent container connects via DOCKER_HOST env var to build+push images" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1285" y="965" width="730" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Jenkins RBAC -->
+    <mxCell id="rbac_box" value="RBAC: jenkins-rbac.yaml&#xa;ClusterRole + ClusterRoleBinding → SA jenkins&#xa;Allows Jenkins to create/delete agent pods across namespaces" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFD6E7;strokeColor=#E7157B;fontSize=9;fontStyle=1;align=left;" vertex="1" parent="1">
+      <mxGeometry x="2055" y="940" width="565" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- ========== PIPELINE STAGES ========== -->
+    <mxCell id="pipeline_box" value="CI/CD Pipeline — Jenkinsfile  (Trigger: pollSCM H/5 * * * *  |  IMAGE_TAG = GIT_COMMIT[0..6])" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFD6E7;strokeColor=#E7157B;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1165" y="1155" width="1460" height="545" as="geometry" />
+    </mxCell>
+
+    <!-- Stage 1: BUILD — Docker icon -->
+    <mxCell id="s1_docker" value="1️⃣ BUILD" style="shape=mxgraph.logos.docker;fillColor=#0db7ed;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1190" y="1215" width="55" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="s1_label" value="docker build three-tier-web:$GIT_COMMIT[0..6]  (WebLayer/dockerfile)&#xa;docker build three-tier-app:$GIT_COMMIT[0..6]  (ApplicationLayer/dockerfile)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1265" y="1225" width="1340" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Stage 2: SONAR — SonarQube icon -->
+    <mxCell id="s2_sonar" value="2️⃣ SONAR" style="shape=mxgraph.logos.sonarqube;fillColor=#0075A8;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1190" y="1285" width="55" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="s2_label" value="sonar-scanner -Dsonar.projectKey=Stalker74_new-app -Dsonar.organization=Stalker74&#xa;Token: credentials(&apos;sonar-token&apos;)  |  ⚠️ DISABLED: when { expression { return false } }" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1265" y="1295" width="1340" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Stage 3: TEST — Python icon -->
+    <mxCell id="s3_python" value="3️⃣ TEST" style="shape=mxgraph.logos.python;fillColor=#3776AB;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1190" y="1355" width="55" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="s3_label" value="docker run three-tier-app:$TAG python -m pytest tests/ -v&#xa;docker run three-tier-web:$TAG python -m pytest tests/ -v" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1265" y="1363" width="1340" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Stage 4+5: TRIVY security badge -->
+    <mxCell id="s45_trivy" value="4️⃣+5️⃣  TRIVY SCAN:  trivy image --severity HIGH,CRITICAL  three-tier-web:$TAG  +  three-tier-app:$TAG" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FADBD8;strokeColor=#DD344C;fontSize=9;fontStyle=1;align=left;" vertex="1" parent="1">
+      <mxGeometry x="1190" y="1425" width="1420" height="35" as="geometry" />
+    </mxCell>
+
+    <!-- Stage 6: PUSH — ECR icon -->
+    <mxCell id="s6_ecr" value="6️⃣ PUSH" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#ED7100;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ecr;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1190" y="1478" width="55" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="s6_label" value="aws ecr get-login-password | docker login $ECR_REGISTRY&#xa;docker push three-tier-web:$TAG + :latest  |  docker push three-tier-app:$TAG + :latest" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1265" y="1486" width="1340" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Stage 7: DEPLOY — K8s icon -->
+    <mxCell id="s7_k8s" value="7️⃣ DEPLOY" style="shape=mxgraph.logos.kubernetes;fillColor=#326CE5;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1190" y="1550" width="55" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="s7_label" value="aws eks update-kubeconfig --name dev-eks-cluster  |  kubectl apply namespaces.yaml + mysql-service-rendered.yaml&#xa;sed &apos;s|IMAGE_TAG_PLACEHOLDER|$TAG|g&apos; web-deployment.yaml | kubectl apply  (same for app-deployment.yaml)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1265" y="1558" width="1340" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Stage 8: SMOKE -->
+    <mxCell id="s8_smoke" value="8️⃣  SMOKE TEST:  kubectl rollout status deployment/web -n app --timeout=120s  |  rollout status deployment/app  |  get pods -n app&#xa;POST always: cleanWs()  |  POST success: echo IMAGE_TAG  |  POST failure: echo BRANCH_NAME + IMAGE_TAG" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6FFE6;strokeColor=#1A9C3E;fontSize=9;fontStyle=1;align=left;" vertex="1" parent="1">
+      <mxGeometry x="1190" y="1620" width="1420" height="55" as="geometry" />
+    </mxCell>
+
+    <!-- ========== DATABASE LAYER ========== -->
+    <mxCell id="db_box" value="Database Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D6EAF8;strokeColor=#2E73B8;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1145" y="1780" width="1490" height="280" as="geometry" />
+    </mxCell>
+
+    <!-- RDS icon -->
+    <mxCell id="rds_icon" value="Amazon RDS&#xa;MySQL 8.0" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#2E73B8;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.rds;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1175" y="1850" width="65" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- MySQL logo -->
+    <mxCell id="mysql_icon" value="MySQL 8.0" style="shape=mxgraph.logos.mysql;fillColor=#00758F;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1270" y="1858" width="65" height="55" as="geometry" />
+    </mxCell>
+
+    <mxCell id="rds_detail" value="Identifier: dev-mysql  |  Class: db.t3.micro  |  Storage: 20GB gp2  |  Port: 3306&#xa;Endpoint: dev-mysql.cmtgwe8q2w1g.us-east-1.rds.amazonaws.com&#xa;DB: appdb  |  User: appuser  |  Password: from Secrets Manager&#xa;SubnetGroup: dev-rds-subnet-group  |  SG: rds-sg (ingress 3306 from 10.0.0.0/16)&#xa;multi_az=false  |  publicly_accessible=false  |  skip_final_snapshot=true" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1360" y="1840" width="1260" height="110" as="geometry" />
+    </mxCell>
+
+    <!-- ========== APPLICATION CODE DETAIL ========== -->
+    <mxCell id="code_box" value="Application Source Code  (three-tier-web-app/)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#495057;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1145" y="2105" width="1490" height="300" as="geometry" />
+    </mxCell>
+
+    <!-- WebLayer code -->
+    <mxCell id="code_web_icon" value="WebLayer&#xa;Flask :5000" style="shape=mxgraph.logos.python;fillColor=#3776AB;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1175" y="2170" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="code_web_detail" value="app.py: GET / → fetch todos (requests to app-service:4000)&#xa;POST /api/create → forward to app | POST /update | /complete/{id}&#xa;Jinja2 templates  |  requirements: Flask, requests&#xa;Dockerfile: Python base → pip install → CMD flask run :5000" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1260" y="2168" width="490" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- AppLayer code -->
+    <mxCell id="code_app_icon" value="AppLayer&#xa;Flask :4000" style="shape=mxgraph.logos.python;fillColor=#3776AB;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1810" y="2170" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="code_app_detail" value="app.py: SQLAlchemy Model: TodoTable(id INT, task STR)&#xa;GET / → all todos (JSON) | POST /create → INSERT | /update | /complete/{id}&#xa;db.create_all() on startup  |  ORM → MySQL todotable&#xa;parameters.py: boto3 → Secrets Manager (GetSecretValue)&#xa;requirements: Flask, flask-sqlalchemy, mysql-connector-python, boto3" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1895" y="2163" width="730" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- Docker Compose local dev -->
+    <mxCell id="compose_icon" value="docker-compose&#xa;(local dev)" style="shape=mxgraph.logos.docker;fillColor=#0db7ed;strokeColor=none;html=1;fontSize=9;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="1175" y="2300" width="60" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="compose_detail" value="docker-compose.yml: web:5000 + app:4000  |  APP_URL wired between containers  |  Local testing before EKS deploy" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1255" y="2307" width="1360" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- ======================================================== -->
+    <!--              RIGHT PANEL — AWS SERVICES                    -->
+    <!-- ======================================================== -->
+    <mxCell id="aws_panel" value="AWS Services" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#232F3E;fontSize=14;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="2700" y="225" width="770" height="2260" as="geometry" />
+    </mxCell>
+
+    <!-- ECR -->
+    <mxCell id="ecr_panel_icon" value="Amazon ECR" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#ED7100;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=11;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ecr;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="275" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="ecr_detail" value="Registry: 175200623112.dkr.ecr.us-east-1.amazonaws.com&#xa;Repos:    three-tier-web  |  three-tier-app&#xa;           jenkins-agent  |  jenkins-master&#xa;Auth:      aws ecr get-login-password (via IRSA jenkins-irsa)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="2800" y="275" width="655" height="85" as="geometry" />
+    </mxCell>
+
+    <!-- Route53 -->
+    <mxCell id="r53_panel_icon" value="Route 53" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#8C4FFF;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=11;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.route_53;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="415" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="r53_detail" value="Private Hosted Zone: volo.pk  (associated to dev-eks-vpc)&#xa;jenkins.volo.pk   CNAME → ALB DNS  (lifecycle: ignore_changes)&#xa;dev.volo.pk        CNAME → ALB DNS  (lifecycle: ignore_changes)&#xa;EKS endpoint       A     → 32.192.120.190, 34.236.10.236&#xa;DNS Server 10.0.0.2 pushed via OpenVPN dhcp-option" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="2800" y="415" width="655" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- ACM -->
+    <mxCell id="acm_panel_icon" value="ACM" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#DD344C;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=11;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.certificate_manager;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="575" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="acm_detail" value="Wildcard: *.volo.pk&#xa;ARN: arn:aws:acm:us-east-1:175200623112:certificate/61405dd3-f2e3-4c46-9fd0-8c50ad5ff525&#xa;Used by all 5 Ingress objects (HTTPS 443)  |  Validation: DNS (Route53)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="2800" y="578" width="655" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- Secrets Manager -->
+    <mxCell id="secrets_panel_icon" value="Secrets Manager" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#DD344C;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.secrets_manager;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="700" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="secrets_detail" value="Secret: dev/three-tier-app/db&#xa;Keys: DB_USER | DB_PASSWORD | DB_HOST | DB_NAME&#xa;IRSA: deveks-cluster-app-irsa → secretsmanager:GetSecretValue+DescribeSecret&#xa;Read by: parameters.py (boto3 SDK) in ApplicationLayer" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="2800" y="703" width="655" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- IAM Roles -->
+    <mxCell id="iam_panel_icon" value="IAM  (IRSA Roles)" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#DD344C;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="845" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="iam_detail" value="jenkins-irsa    (SA: jenkins:jenkins)&#xa;  → ECR: Get/Put/Check/Upload/Complete + EKS:DescribeCluster&#xa;app-irsa        (SA: app:app-sa)&#xa;  → secretsmanager: GetSecretValue + DescribeSecret  (scoped ARN)&#xa;alb-controller  (SA: kube-system:aws-load-balancer-controller)&#xa;  → AWSLoadBalancerControllerIAMPolicy  (arn: …:policy/…)&#xa;ebs-csi-role    (SA: kube-system:ebs-csi-controller-sa)&#xa;  → AmazonEBSCSIDriverPolicy&#xa;cluster-role    → EKS control plane IAM&#xa;node-role       → EC2 worker node IAM&#xa;All: sts:AssumeRoleWithWebIdentity via OIDC" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="2800" y="843" width="655" height="200" as="geometry" />
+    </mxCell>
+
+    <!-- S3 State -->
+    <mxCell id="s3_panel_icon" value="S3  (TF State)" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#3F8624;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="1105" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="s3_detail" value="Bucket: 175200623112-terraform-state&#xa;Key: eks-project/terraform.tfstate  |  Region: us-east-1&#xa;Provider: hashicorp/aws ≥5.0  |  tls + local providers" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="2800" y="1108" width="655" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- CloudWatch -->
+    <mxCell id="cw_panel_icon" value="CloudWatch" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=none;fillColor=#E7157B;labelBackgroundColor=#ffffff;align=center;html=1;fontSize=11;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="1235" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="cw_detail" value="/aws/eks/dev-eks-cluster/cluster&#xa;Log types: api | audit | authenticator | controllerManager | scheduler&#xa;Deleted on destroy via null_resource (PowerShell cleanup)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="2800" y="1238" width="655" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- Terraform IaC summary -->
+    <mxCell id="tf_panel_icon" value="Terraform IaC" style="shape=mxgraph.logos.terraform;fillColor=#7B42BC;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="1365" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="tf_panel_detail" value="modules/vpc       → terraform-aws-modules/vpc/aws v5.1.0&#xa;modules/eks       → cluster v1.31 + 2 node groups + OIDC provider&#xa;modules/iam_roles → cluster-role + node-role&#xa;modules/iam_irsa  → 4x IRSA roles (jenkins, app, alb, ebs)&#xa;modules/rds       → MySQL 8.0 db.t3.micro 20GB&#xa;modules/secrets   → Secrets Manager secret&#xa;root main.tf      → Route53 + ebs-addon + 2x local_file renders" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="2800" y="1363" width="655" height="125" as="geometry" />
+    </mxCell>
+
+    <!-- Docker images summary -->
+    <mxCell id="docker_panel_icon" value="Docker Images" style="shape=mxgraph.logos.docker;fillColor=#0db7ed;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="1555" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="docker_panel_detail" value="three-tier-web  (WebLayer/dockerfile — Python/Flask :5000)&#xa;three-tier-app  (ApplicationLayer/dockerfile — Python/Flask :4000)&#xa;jenkins-agent   (agent/dockerfile — inbound-agent + Docker CLI + kubectl + AWS CLI + Trivy + SonarScanner)&#xa;docker:24-dind  (sidecar DinD)  |  jenkins/jenkins:lts  (master)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="2800" y="1558" width="655" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- GitHub summary -->
+    <mxCell id="github_panel_icon" value="GitHub" style="shape=mxgraph.logos.github;fillColor=#24292E;strokeColor=none;html=1;fontSize=11;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="1700" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="github_panel_detail" value="Repo: WASIF-DEVOPS/new-app  (alias Stalker74/new-app)&#xa;Branch: main  |  IMAGE_TAG = GIT_COMMIT[0..6]&#xa;Current deployed tag: 33caebf&#xa;Trigger: Jenkins pollSCM(&apos;H/5 * * * *&apos;)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="2800" y="1703" width="655" height="75" as="geometry" />
+    </mxCell>
+
+    <!-- SonarCloud -->
+    <mxCell id="sonar_panel_icon" value="SonarCloud" style="shape=mxgraph.logos.sonarqube;fillColor=#0075A8;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="1843" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="sonar_panel_detail" value="URL: https://sonarcloud.io  |  Org: Stalker74  |  Project: Stalker74_new-app&#xa;Token: Jenkins credential &apos;sonar-token&apos;  |  Sources: three-tier-web-app/&#xa;Ingress: sonar.volo.pk → sonarqube-service:9000&#xa;⚠️ Status: DISABLED in pipeline (when { expression { return false } })" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="2800" y="1846" width="655" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Prometheus panel -->
+    <mxCell id="prom_panel_icon" value="Prometheus" style="shape=mxgraph.logos.prometheus;fillColor=#E6522C;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="1990" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="prom_panel_detail" value="kube-prometheus-stack (Helm)  |  Port 9090&#xa;Scrapes: k8s nodes, pods, deployments, services&#xa;Ingress: prometheus.volo.pk  |  Feeds metrics to Grafana" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="2800" y="1993" width="655" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- Grafana panel -->
+    <mxCell id="grafana_panel_icon" value="Grafana" style="shape=mxgraph.logos.grafana;fillColor=#F46800;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="2120" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="grafana_panel_detail" value="prometheus-grafana (Helm)  |  Port 80&#xa;Pre-configured Prometheus datasource&#xa;Ingress: grafana.volo.pk  |  Visualises EKS + app metrics" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="2800" y="2123" width="655" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- K8s manifests summary -->
+    <mxCell id="k8s_panel_icon" value="K8s Manifests" style="shape=mxgraph.logos.kubernetes;fillColor=#326CE5;strokeColor=none;html=1;fontSize=10;fontStyle=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="2255" width="65" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="k8s_panel_detail" value="namespaces.yaml (app + monitoring) | jenkins.yaml (NS+SA+PVC+Deploy+Service)&#xa;web-deployment.yaml (Deploy+ClusterIP) | app-deployment.yaml (Deploy+ClusterIP)&#xa;app-serviceaccount.yaml (IRSA rendered by TF) | ingress.yaml (5 ingresses)&#xa;storageclass.yaml (gp2-ebs default) | jenkins-rbac.yaml (ClusterRole+Binding)&#xa;mysql-deployment.yaml (ExternalName svc rendered by TF)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="2800" y="2255" width="655" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- ======================================================== -->
+    <!--                       CONNECTIONS                          -->
+    <!-- ======================================================== -->
+
+    <!-- Developer → OpenVPN (UDP 1194) -->
+    <mxCell id="e_dev_vpn" value="OpenVPN UDP 1194" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#FF6600;strokeWidth=3;dashed=1;fontSize=10;fontColor=#FF6600;" edge="1" source="dev_icon" target="openvpn_ec2_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Developer → GitHub (git push) -->
+    <mxCell id="e_dev_github" value="git push" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#24292E;strokeWidth=2;fontSize=9;" edge="1" source="dev_icon" target="github_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- OpenVPN → ALB (HTTPS via VPN) -->
+    <mxCell id="e_vpn_alb" value="HTTPS 443 via VPN tunnel" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#00AA00;strokeWidth=2;fontSize=9;fontColor=#00AA00;" edge="1" source="openvpn_ec2_icon" target="alb_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- IGW → NAT (outbound internet path) -->
+    <mxCell id="e_igw_nat" value="internet route" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#8C4FFF;strokeWidth=2;fontSize=9;dashed=1;" edge="1" source="igw_icon" target="nat_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- NAT → ECR (image pull outbound) -->
+    <mxCell id="e_nat_ecr" value="ECR pull / SonarCloud outbound" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#ED7100;strokeWidth=2;fontSize=9;dashed=1;" edge="1" source="nat_icon" target="ecr_panel_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ALB → Jenkins -->
+    <mxCell id="e_alb_jenkins" value="jenkins.volo.pk → :8080" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#8C4FFF;strokeWidth=2;fontSize=9;" edge="1" source="alb_icon" target="jenkins_master_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ALB → Web Pod -->
+    <mxCell id="e_alb_web" value="dev.volo.pk → web-service:80" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#8C4FFF;strokeWidth=2;fontSize=9;" edge="1" source="alb_icon" target="web_pod_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ALB → Prometheus -->
+    <mxCell id="e_alb_prom" value="prometheus.volo.pk" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#8C4FFF;strokeWidth=2;fontSize=9;" edge="1" source="alb_icon" target="prom_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ALB → Grafana -->
+    <mxCell id="e_alb_grafana" value="grafana.volo.pk" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#8C4FFF;strokeWidth=2;fontSize=9;" edge="1" source="alb_icon" target="grafana_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Web → App (inter-service call) -->
+    <mxCell id="e_web_app" value="http://app-service:4000" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#1A9C3E;strokeWidth=3;fontSize=9;" edge="1" source="web_pod_icon" target="app_pod_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- App → RDS -->
+    <mxCell id="e_app_rds" value="SQLAlchemy MySQL 3306" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#2E73B8;strokeWidth=3;fontSize=9;" edge="1" source="app_pod_icon" target="rds_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- App SA → Secrets Manager -->
+    <mxCell id="e_app_secrets" value="IRSA GetSecretValue" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#DD344C;strokeWidth=2;fontSize=9;dashed=1;" edge="1" source="app_sa_icon" target="secrets_panel_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Jenkins → Jenkins Agent (JNLP spawn) -->
+    <mxCell id="e_jenkins_agent" value="JNLP :50000 (K8s plugin spawns pod)" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#E7157B;strokeWidth=2;fontSize=9;" edge="1" source="jenkins_master_icon" target="agent_jenkins_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- DinD → Docker agent (tcp) -->
+    <mxCell id="e_dind_agent" value="tcp://localhost:2375" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#F9A825;strokeWidth=2;fontSize=9;" edge="1" source="dind_docker_icon" target="agent_docker_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Pipeline ECR Push -->
+    <mxCell id="e_push_ecr" value="docker push (IRSA jenkins-irsa)" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#ED7100;strokeWidth=2;fontSize=9;" edge="1" source="s6_ecr" target="ecr_panel_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Pipeline kubectl deploy → EKS -->
+    <mxCell id="e_deploy_eks" value="kubectl apply (update-kubeconfig)" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#326CE5;strokeWidth=2;fontSize=9;" edge="1" source="s7_k8s" target="eks_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Pipeline Sonar → SonarCloud -->
+    <mxCell id="e_sonar_cloud" value="code analysis (disabled)" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#0075A8;strokeWidth=2;fontSize=9;dashed=1;" edge="1" source="s2_sonar" target="sonar_panel_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- GitHub → Jenkins (poll) -->
+    <mxCell id="e_github_jenkins" value="pollSCM H/5 * * * *" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#24292E;strokeWidth=2;fontSize=9;" edge="1" source="github_icon" target="jenkins_master_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Prometheus → Grafana (scrape) -->
+    <mxCell id="e_prom_grafana" value="scrape metrics" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#FF6D00;strokeWidth=2;fontSize=9;dashed=1;" edge="1" source="prom_icon" target="grafana_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ALB Controller → ALB (provisions) -->
+    <mxCell id="e_albctrl_alb" value="provisions AWS ALB" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#8C4FFF;strokeWidth=2;fontSize=9;dashed=1;" edge="1" source="alb_ctrl_k8s" target="alb_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- EBS CSI → Jenkins PVC -->
+    <mxCell id="e_ebs_pvc" value="provisions 20Gi EBS volume" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#3F8624;strokeWidth=2;fontSize=9;dashed=1;" edge="1" source="ebs_csi_k8s" target="ebs_jenkins_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Route53 → ALB (CNAMEs) -->
+    <mxCell id="e_r53_alb" value="CNAMEs → ALB DNS" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#8C4FFF;strokeWidth=2;fontSize=9;" edge="1" source="r53_panel_icon" target="alb_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- OIDC → IAM IRSA -->
+    <mxCell id="e_oidc_iam" value="sts:AssumeRoleWithWebIdentity" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#DD344C;strokeWidth=2;fontSize=9;dashed=1;" edge="1" source="oidc_icon" target="iam_panel_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ECR → agent (image pull) -->
+    <mxCell id="e_ecr_agent" value="docker pull jenkins-agent:latest" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#ED7100;strokeWidth=2;fontSize=9;dashed=1;" edge="1" source="ecr_panel_icon" target="agent_jenkins_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Jenkins IRSA → ECR auth -->
+    <mxCell id="e_jkirsa_ecr" value="IRSA ECR auth" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#DD344C;strokeWidth=2;fontSize=9;dashed=1;" edge="1" source="jenkins_irsa_icon" target="ecr_panel_icon" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>
