@@ -1,4 +1,4 @@
-﻿# Terraform
+# Terraform
 **/.terraform/
 *.tfstate
 *.tfstate.backup
@@ -40,5 +40,22 @@ acm-validation-dns.json
 grafana-dns.json
 prometheus-dns.json
 
-# Secrets
+# Secrets & credentials
 secrets.yaml
+*.pem
+*.key
+ebs-trust-policy.json
+
+# Operational / one-time scripts (keep locally, not in repo)
+destroy.ps1
+dns-records.json
+dns-update.json
+delete-records.json
+delete-sgs.py
+patch.json
+aws-auth-patch.yaml
+change-batch.json
+*-trust-policy.json
+
+# Old architecture docs (superseded by EKS images/ARCHITECTURE.md)
+ARCHITECTURE.md
