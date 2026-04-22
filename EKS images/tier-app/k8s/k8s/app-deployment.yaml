@@ -26,8 +26,8 @@ spec:
               value: "dev/three-tier-app/db"
             - name: DB_USER
               value: "appuser"
-            - name: DB_PASSWORD
-              value: "StrongPass123"
+            # DB_PASSWORD fetched from AWS Secrets Manager via IRSA (dev/three-tier-app/db)
+            # Do NOT hardcode credentials here
             - name: DB_HOST
               value: "dev-mysql.cmtgwe8q2w1g.us-east-1.rds.amazonaws.com"
             - name: DB_NAME
